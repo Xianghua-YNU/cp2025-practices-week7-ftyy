@@ -59,7 +59,7 @@ def visualize_data(data, column_name='成绩'):
 
 def save_processed_data(data):
     """任务6: 保存处理后的数据"""
-    data.to_csv('data/processed_data.csv', index=False)
+    data.to_csv('processed_data.csv', index=False)
 
 def main():
     """主函数，执行所有数据处理流程"""
