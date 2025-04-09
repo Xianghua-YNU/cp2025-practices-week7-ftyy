@@ -22,11 +22,12 @@ def creat_frame():
     df = pd.DataFrame(data)
     df.to_csv("students.csv", index=False, encoding="utf-8")
     print("学生信息已保存为 students.csv 文件。")
+    return df  # 返回创建的DataFrame以便测试
 
 def load_data():
     """任务1: 读取数据文件"""
     try:
-        data = pd.read_csv("data.csv", encoding="utf-8")
+        data = pd.read_csv("students.csv", encoding="utf-8")  # 修改为读取students.csv
         print("数据加载成功！")
         return data
     except FileNotFoundError:
@@ -72,12 +73,7 @@ def save_processed_data(data):
 def main():
     """主函数，执行所有数据处理流程"""
     # 创建数据文件
-    creat_frame()
-    
-    # 加载数据
-    data = load_data()
-    if data is None:
-        return
+    data = creat_frame()  # 获取初始DataFrame
     
     # 显示基本信息
     show_basic_info(data)
