@@ -10,7 +10,8 @@ def create_small_filter():
         numpy.ndarray: 3×3的滤波器矩阵，每个元素值为1/9
     """
     # 学生需要在此实现代码
-    pass
+    """创建3×3平均滤波器"""
+    return 1/9*np.ones((3,3))
 
 def create_large_filter():
     """
@@ -20,7 +21,8 @@ def create_large_filter():
         numpy.ndarray: 15×15的滤波器矩阵，每个元素值为1/225
     """
     # 学生需要在此实现代码
-    pass
+    """创建15×15平均滤波器"""
+    return 1/225*np.ones((15,15))
 
 def process_image(input_file):
     """
@@ -39,15 +41,15 @@ def process_image(input_file):
         完成以下步骤的实现代码
     """
     # 1. 读取图像 - 使用plt.imread()函数
-    img = None  # 学生需要实现
+    img = plt.imread(input_file)  # 学生需要实现
     
     # 2. 创建滤波器 - 调用已实现的函数
-    small_filter = None  # 学生需要调用create_small_filter()
-    large_filter = None  # 学生需要调用create_large_filter()
+    small_filter = create_small_filter()  # 学生需要调用create_small_filter()
+    large_filter = create_large_filter()# 学生需要调用create_large_filter()
     
     # 3. 应用卷积 - 使用sim.convolve()函数
-    small_result = None  # 学生需要实现小滤波器卷积读入的图像
-    large_result = None  # 学生需要实现大滤波器卷积读入的图像
+    small_result = sim.convolve(img, small_filter)  # 学生需要实现小滤波器卷积读入的图像
+    large_result = sim.convolve(img, large_filter)  # 学生需要实现大滤波器卷积读入的图像
     
     # 4. 显示结果 - 使用matplotlib绘制对比图
     # 创建画布
@@ -56,17 +58,23 @@ def process_image(input_file):
     # 显示原始图像
     plt.subplot(1, 3, 1)
     # 学生需要添加显示原始图像的代码
+    plt.imshow(img, cmap='gray')
     plt.title('Original Image')
+    plt.axis('off')
     
     # 显示3×3滤波结果
     plt.subplot(1, 3, 2)
     # 学生需要添加显示小滤波器结果的代码
+    plt.imshow(small_result, cmap='gray')
     plt.title('3×3 Filter Result')
+    plt.axis('off')
     
     # 显示15×15滤波结果
     plt.subplot(1, 3, 3)
     # 学生需要添加显示大滤波器结果的代码
+    plt.imshow(large_result, cmap='gray')
     plt.title('15×15 Filter Result')
+    plt.axis('off')
     
     # 调整布局并显示
     plt.tight_layout()
