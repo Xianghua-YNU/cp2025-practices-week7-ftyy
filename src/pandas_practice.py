@@ -18,14 +18,14 @@ def creat_frame():
         "城市": ["北京", "上海", "广州", "深圳", None]
     }
     df = pd.DataFrame(data)
-    df.to_csv("students.csv", index=False, encoding="utf-8")
+    df.to_csv("data/students.csv", index=False, encoding="utf-8")
     print("学生信息已保存为 students.csv 文件。")
     return df
 
 def load_data():
     """任务1: 读取数据文件"""
     try:
-        data = pd.read_csv("students.csv", encoding="utf-8")
+        data = pd.read_csv("data/students.csv", encoding="utf-8")
         print("数据加载成功！")
         return data
     except FileNotFoundError:
