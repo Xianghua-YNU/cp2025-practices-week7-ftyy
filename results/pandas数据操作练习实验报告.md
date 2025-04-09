@@ -8,25 +8,25 @@
 
 ### 任务 1: 读取数据
 说明你使用的读取数据的函数和过程。
-'''
+```
 def load_data():
     """任务1: 读取数据文件"""
     return pd.read_csv('data/data.csv')
-'''
+```
 使用pd.read_csv()函数读取CSV格式的数据文件。在代码中，我创建了load_data()函数专门用于数据读取
 ### 任务 2: 查看数据基本信息
 描述如何查看数据的基本信息。
 使用DataFrame的info()方法查看数据的基本信息，包括列名、非空值数量、数据类型等：
-'''
+```
 def show_basic_info(data):
     """任务2: 显示数据基本信息"""
     print("数据基本信息：")
     data.info()
-'''
+```
 ### 任务 3: 处理缺失值
 说明你找出缺失值列和填充缺失值的方法。
 首先找出包含缺失值的列,对数值型列使用均值填充缺失值
-'''
+```
 def handle_missing_values(data):
     """任务3: 处理缺失值"""
     missing_columns = data.columns[data.isnull().any()].tolist()
@@ -34,11 +34,11 @@ def handle_missing_values(data):
         if pd.api.types.is_numeric_dtype(data[col]):
             data[col] = data[col].fillna(data[col].mean())
     return data
-'''
+```
 ### 任务 4: 数据统计分析
 说明你计算数值列均值、中位数和标准差的方法。
 对数值列用模块计算均值、中位数和标准差：
-'''
+```
 def analyze_statistics(data):
     """任务4: 统计分析数值列"""
     numeric_columns = data.select_dtypes(include=['number']).columns
@@ -47,23 +47,23 @@ def analyze_statistics(data):
         median_value = data[col].median()
         std_value = data[col].std()
         print(f"{col} 列的均值: {mean_value}, 中位数: {median_value}, 标准差: {std_value}")
-'''
+```
 ### 任务 5: 数据可视化
 描述你选择的数值列和绘制直方图的过程。
 使用Matplotlib绘制成绩列的直方图：
-'''
+```
 def visualize_data(data, column_name='成绩'):
     """任务5: 数据可视化"""
     data[column_name].plot.hist()
     plt.show()
-'''
+```
 ### 任务 6: 数据保存
 说明你保存处理后数据的方法。
-'''
+```
 def save_processed_data(data):
     """任务6: 保存处理后的数据"""
     data.to_csv('processed_data.csv', index=False)
-'''
+```
 ## 三、实验结果
 展示每个任务的结果，可使用表格或图表进行呈现。
 
@@ -97,7 +97,8 @@ memory usage: 292.0+ bytes
 
 ### 任务 6: 数据保存
 说明保存的文件路径和文件名。
-src/processed_data.csv
+文件路径：src/
+文件名：processed_data.csv
 ## 四、总结
 总结本次实验的收获和体会，分析遇到的问题及解决方法，对 Pandas 数据操作的理解和认识。
 通过本次实验，我掌握了Pandas库的基本操作流程，包括数据读取、清洗、分析和可视化。特别是学会了如何处理缺失值，这是实际数据分析工作中经常遇到的问题。
